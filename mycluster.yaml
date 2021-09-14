@@ -1,0 +1,21 @@
+apiVersion:ekctl.io/v1alpha
+kind: ClusterConfig
+
+metadata:
+  name  : jenya-super-cluster
+  region: us-east-1
+
+vpc:
+ subnets:
+   private:
+      us-east-1a:{id:subnet-    }
+      us-east-1b:{id:subnet-    }
+      us-east-1c:{id:subnet-    }
+
+nodeGroups:
+  -  name           : woreker-nodes-group-1
+     instanceType   : m.5large
+     desiredCapacity: 2
+  -  name           : woreker-nodes-group-2
+     instanceType   : m.5large
+     desiredCapacity: 2
