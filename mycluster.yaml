@@ -1,3 +1,6 @@
+#eksctl_cluster_(aws)
+#created_by_Jenya
+
 apiVersion:ekctl.io/v1alpha
 kind: ClusterConfig
 
