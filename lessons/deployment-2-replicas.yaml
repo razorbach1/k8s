@@ -1,28 +1,24 @@
 #-------------------------------------------------------------
-# Manifest File to create Deployment with Labels and ReplicaSet
-#
-# 
-#-------------------------------------------------------------
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: my-web-deployment-replicas
+  name: my-web-replicas
   labels:
-    app  : my-k8s-application
+    app  : my-k8s-app
     env  : prod
-    owner: DenisAstahov
+    owner: jenya_topol
 spec:
   replicas: 3
   selector:
     matchLabels:
-      project: cia
+      project: second-proj
   template:
     metadata:
       labels:
-        project: cia
+        project: second-proj
     spec:
       containers:
-        - name : cia-web
-          image: adv4000/k8sphp:version1
+        - name : apache1-web
+          image: httpd:latest
           ports:
             - containerPort: 80
