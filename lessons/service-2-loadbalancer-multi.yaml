@@ -1,8 +1,4 @@
 #---------------------------------------------------------------------
-# Manifest File to create Multi Container Pods Deployment with Service
-#
-# 
-#---------------------------------------------------------------------
 apiVersion : apps/v1
 kind: Deployment
 metadata:
@@ -13,19 +9,19 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      project: cia
+      project: second-proj
   template:
     metadata:
       labels:
-        project: cia
+        project: second-proj
     spec:
       containers:
         - name : my-web
-          image: adv4000/k8sphp:latest
+          image: httpd:latest
           ports:
             - containerPort: 80   # Port on Pod
 
-        - name : not-my-web
+        - name : my-web-1
           image: tomcat:8.5.38
           ports:
             - containerPort: 8080  # Port on Pod
@@ -37,11 +33,11 @@ metadata:
   name: my-multi-pods-service
   labels:
      env  : prod
-     owner: DenisAstahov
+     owner: jenya-topol
 spec:
   type: LoadBalancer
   selector:
-    project: cia
+    project: second-proj
   ports:
     - name      : my-web-app-listener
       protocol  : TCP
