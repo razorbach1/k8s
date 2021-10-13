@@ -1,8 +1,4 @@
 #---------------------------------------------------------------------
-# Manifest File to create Single Container Pod Deployment with Service
-#
-# 
-#---------------------------------------------------------------------
 apiVersion : apps/v1
 kind: Deployment
 metadata:
@@ -13,15 +9,15 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      project: kgb
+      project: first-proj
   template:
     metadata:
       labels:
-        project: kgb   # Service will look for those PODS Labels!!!
+        project: first-proj   # Service will look for those PODS Labels!!!
     spec:
       containers:
-        - name : kgb-web
-          image: adv4000/k8sphp:latest
+        - name : apache-web
+          image: httpd:latest
           ports:
             - containerPort: 80
 
@@ -32,10 +28,10 @@ metadata:
   name: my-single-pod-service
   labels:
     env  : prod
-    owner: DenisAstahov
+    owner: jenya-topol
 spec:
   selector:
-    project: kgb    # Selecting PODS with those Labels
+    project: first-proj    # Selecting PODS with those Labels
   ports:
     - name      : app-listener
       protocol  : TCP
