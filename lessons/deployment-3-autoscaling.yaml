@@ -1,4 +1,3 @@
-#-------------------------------------------------------------
 apiVersion : apps/v1
 kind: Deployment
 metadata:
@@ -8,7 +7,7 @@ metadata:
     env  : prod
     owner: jenya-topol
 spec:
-#  replicas: 2   # Don't need this anymore as we are using HorizontalPodAutoscaler
+#  replicas: 2   # Don't need replicas any more as we are using HorizontalPodAutoscaler
   selector:
     matchLabels:
       project: third-proj
