@@ -17,8 +17,8 @@ vpc:
 
 nodeGroups:
   -  name           : woreker-nodes-my-first
-     instanceType   : m5.large
+     instanceType   : m2.micro
      desiredCapacity: 1
   -  name           : woreker-nodes-group-2
-     instanceType   : m5.large
+     instanceType   : m2.micro
      desiredCapacity: 1
