@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: module10-deployment
   labels:
-    app : my-k8s-deployment
+    app : my-eks-deployment
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
-      project: first-proj
+      project: pod-proj
   template:
     metadata:
       labels:
-        project: first-proj   # Service will look for those PODS Labels!!!
+        project: pod-proj   # Service will look for those PODS Labels!!!
     spec:
       containers:
-        - name : apache-web
+        - name : nexus
           image: httpd:latest
           ports:
             - containerPort: 80
@@ -27,10 +27,10 @@ metadata:
   name: my-single-pod-service
   labels:
     env  : prod
-    owner: jenya-topol
+    owner: Raz_Orbach
 spec:
   selector:
-    project: first-proj    # Selecting PODS with those Labels
+    project: pod-proj    # Selecting PODS with those Labels
   ports:
     - name      : app-listener
       protocol  : TCP
