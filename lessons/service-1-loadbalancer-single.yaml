@@ -1,7 +1,7 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: my-web-deployment
+  name: module10-deployment
   labels:
     app : my-k8s-deployment
 spec:
