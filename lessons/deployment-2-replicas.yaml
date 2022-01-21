@@ -1,23 +1,23 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: my-web-replicas
+  name: module10-replicas
   labels:
-    app  : my-k8s-app
+    app  : my-eks-app
     env  : prod
-    owner: jenya_topol
+    owner: Raz_Orbach
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
-      project: second-proj
+      project: pod-proj
   template:
     metadata:
       labels:
-        project: second-proj
+        project: pod-proj
     spec:
       containers:
-        - name : apache1-web
+        - name : nexus
           image: httpd:latest
           ports:
             - containerPort: 80
